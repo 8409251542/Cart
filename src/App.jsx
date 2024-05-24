@@ -18,6 +18,9 @@ const App = () => {
   const handleRemoveProduct = (id) => {
     dispatch({ type: 'REMOVE_PRODUCT', payload: { id } });
   };
+  const handleDeleteProduct = (id) => {
+    dispatch({ type: 'DELETE_PRODUCT', payload: { id } });
+  };
 
   const totalItems = products.reduce((sum, product) => sum + product.qty, 0);
   const totalPrice = products.reduce((sum, product) => sum + product.qty * product.price, 0);
@@ -46,7 +49,7 @@ const App = () => {
                   <div className="flex flex-col justify-between ml-4 flex-grow">
                     <span className="font-bold text-sm">{name}</span>
                     <span className="text-red-500 text-xs">{brand}</span>
-                    <a href="#" className="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                    <a onClick={() => handleDeleteProduct(id)} className="font-semibold cursor-pointer hover:text-red-500 text-gray-500 text-xs">Remove</a>
                   </div>
                 </div>
                 <div className="flex justify-center w-1/5">
